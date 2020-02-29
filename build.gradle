@@ -8,11 +8,15 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.3.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        classpath 'com.android.tools.build:gradle:3.6.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -22,6 +26,14 @@ allprojects {
         jcenter()
         
     }
+}
+
+subprojects {
+    tasks.withType(Javadoc).all {
+        enabled false
+        excludes = ['**/*.kt'] // < ---- Exclude all kotlin files from javadoc file.
+    }
+    //options.addBooleanOption('Xdoclint:none', true)
 }
 
 task clean(type: Delete) {

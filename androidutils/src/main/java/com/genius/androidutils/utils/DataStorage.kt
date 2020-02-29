@@ -8,7 +8,7 @@ import android.content.SharedPreferences
  */
 class DataStorage(context: Context) {
 
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences(Keys.PREFS_NAME, Context.MODE_PRIVATE)
+    private val sharedPreferences: SharedPreferences = context.getSharedPreferences("PREFS_NAME", Context.MODE_PRIVATE)
 
     fun saveString(key: String?, value: String?) {
         sharedPreferences.edit().putString(key, value).apply()
